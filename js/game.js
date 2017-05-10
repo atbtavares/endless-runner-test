@@ -4,13 +4,13 @@ var GameState = function(game) {};
 
 GameState.prototype.preload = function() {
 
-   game.load.image('starfield', '../assets/starfield.png');
+   game.load.image('field', '../assets/field.png');
    game.load.image('player', '../assets/itali.png');
    game.load.image('enemy1', '../assets/schoolbus.png');
 
 }
 
-var starfield;
+var field;
 var player;
 var cursors;
 var enemies;
@@ -21,14 +21,18 @@ GameState.prototype.create = function() {
 
    game.physics.startSystem(Phaser.Physics.ARCADE);
 
-// The scrolling starfield background
-   starfield = game.add.tileSprite(0, 0, 800, 600, 'starfield');
+   game.world.setBounds(0, 0, 1200, 800);
+   game.add.sprite(0, 0, 'field');
+
+// The scrolling field background
+   field = game.add.tileSprite(0, 0, 1600, 1200, 'field');
 
    player = game.add.sprite(400, 500, 'player');
    player.anchor.setTo(0.5, 0.5);
    player.angle = -90;
    player.scale.x = 1.5;
    player.scale.y = 1.5;
+   game.camera.follow(player);
    game.physics.enable(player, Phaser.Physics.ARCADE);
 
    //  The baddies!
@@ -49,7 +53,7 @@ GameState.prototype.create = function() {
 GameState.prototype.update = function() {
 
 //  Scroll the background
-   starfield.tilePosition.y += 4;
+   field.tilePosition.y += 3;
 
    if (enemy1.alive)
    {
@@ -62,12 +66,22 @@ GameState.prototype.update = function() {
       player.body.velocity.setTo(0, 0);
 
       if (cursors.left.isDown) {
-        player.body.velocity.x = -200;
+        //player.body.velocity.x = -200;
+	player.x -=4;
       }
       else if (cursors.right.isDown) {
-        player.body.velocity.x = 200;
+        //player.body.velocity.x = 200;
+	player.x +=4;
       }
 
+      if (cursors.up.isDown)
+      {
+        player.y -= 4;
+      }
+      else if (cursors.down.isDown)
+      {
+        player.y += 4;
+      }
 //  Firing?
 /*
       if (fireButton.isDown) {
@@ -85,4 +99,10 @@ GameState.prototype.update = function() {
   }
 }
 
+function render() {
+
+    game.debug.cameraInfo(game.camera, 280, 32);
+    game.debug.spriteCoords(player, 32, 32);
+
+}
 
