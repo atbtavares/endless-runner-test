@@ -18,5 +18,5 @@
 
 ## Controle do jogador
 Setas direita ou esquerda, movem o jogador lateralmente \
-Seta para direita 2x faz o jogador desviar \
+Setas 2x para direita ou esquerda fazem o jogador desviar \
 Espaço faz uma breve pausa que tem tempo de cooldown
