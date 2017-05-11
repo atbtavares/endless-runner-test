@@ -19,4 +19,16 @@
 ## Controle do jogador
 Setas direita ou esquerda, movem o jogador lateralmente \
 Setas 2x para direita ou esquerda fazem o jogador desviar \
-Espaço faz uma breve pausa que tem tempo de cooldown
+Espaço faz o jogador correr mais rápido (tem tempo de cooldown)
+
+## Tarefas 
+- [x] Iniciar implementação da estrutura básica do jogo
+- [x] Criar o GDD
+- [x] Definir regras básicas
+- [x] Implementar camera do estado de jogo
+- [ ] Implementar estados de menu e pause
+- [ ] Implementar movimentos do jogador
+- [ ] Implementar movimentos dos adversários
+- [ ] Implementar colisões
+- [ ] Implementar condições de vitória ou derrota e pontuação
+- [ ] Ajustar assets e animações
