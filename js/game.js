@@ -4,8 +4,7 @@ var GameState = function(game) {};
 
 GameState.prototype.preload = function() {
 
-   game.load.image('field', '../assets/field.png');
-   game.load.image('field2', '../assets/field2.png');
+   game.load.image('field', '../assets/field2.png');
    game.load.image('player', '../assets/itali.png');
    game.load.image('enemy1', '../assets/schoolbus.png');
 
@@ -24,11 +23,11 @@ GameState.prototype.create = function() {
    game.physics.startSystem(Phaser.Physics.ARCADE);
 
    game.world.setBounds(0, 0, 1200, 600);
-   //game.add.sprite(0, 0, 'field2');
+   //game.add.sprite(0, 0, 'field');
 
 
 // The scrolling field background
-   field = game.add.tileSprite(0, 0, 1200, 600, 'field2');
+   field = game.add.tileSprite(0, 0, 1200, 600, 'field');
 
    player = game.add.sprite(600, 500, 'player');
    player.anchor.setTo(0.5, 0.5);
