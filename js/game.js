@@ -5,7 +5,7 @@ var GameState = function(game) {};
 GameState.prototype.preload = function() {
 
    game.load.image('field', '../assets/field2.png');
-   game.load.image('player', '../assets/itali.png');
+   game.load.spritesheet('player', '../assets/player_133x109.png',133,109,3);
    game.load.image('enemy1', '../assets/schoolbus.png');
 
 }
@@ -31,7 +31,9 @@ GameState.prototype.create = function() {
 
    player = game.add.sprite(600, 500, 'player');
    player.anchor.setTo(0.5, 0.5);
-   player.angle = -90;
+   player.scale.setTo(0.7, 0.7);
+   player.animations.add('walk',[0,1,0,2],3,true);
+   player.animations.play('walk');
    game.camera.follow(player);
    game.physics.enable(player, Phaser.Physics.ARCADE);
 
