@@ -5,6 +5,7 @@ var GameState = function(game) {};
 GameState.prototype.preload = function() {
 
    game.load.image('field', '../assets/field.png');
+   game.load.image('field2', '../assets/field2.png');
    game.load.image('player', '../assets/itali.png');
    game.load.image('enemy1', '../assets/schoolbus.png');
 
@@ -21,11 +22,11 @@ GameState.prototype.create = function() {
 
    game.physics.startSystem(Phaser.Physics.ARCADE);
 
-   game.world.setBounds(0, 0, 1200, 800);
-   game.add.sprite(0, 0, 'field');
+   game.world.setBounds(0, 0, 1200, 600);
+   //game.add.sprite(0, 0, 'field2');
 
 // The scrolling field background
-   field = game.add.tileSprite(0, 0, 1600, 1200, 'field');
+   field = game.add.tileSprite(0, 0, 1200, 600, 'field2');
 
    player = game.add.sprite(400, 500, 'player');
    player.anchor.setTo(0.5, 0.5);
@@ -66,11 +67,9 @@ GameState.prototype.update = function() {
       player.body.velocity.setTo(0, 0);
 
       if (cursors.left.isDown) {
-        //player.body.velocity.x = -200;
 	player.x -=4;
       }
       else if (cursors.right.isDown) {
-        //player.body.velocity.x = 200;
 	player.x +=4;
       }
 
@@ -100,9 +99,7 @@ GameState.prototype.update = function() {
 }
 
 function render() {
-
     game.debug.cameraInfo(game.camera, 280, 32);
     game.debug.spriteCoords(player, 32, 32);
-
 }
 
