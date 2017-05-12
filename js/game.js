@@ -18,6 +18,7 @@ var enemies;
 var enemy1;
 var livingEnemies = [];
 
+
 GameState.prototype.create = function() {
 
    game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -25,14 +26,13 @@ GameState.prototype.create = function() {
    game.world.setBounds(0, 0, 1200, 600);
    //game.add.sprite(0, 0, 'field2');
 
+
 // The scrolling field background
    field = game.add.tileSprite(0, 0, 1200, 600, 'field2');
 
-   player = game.add.sprite(400, 500, 'player');
+   player = game.add.sprite(600, 500, 'player');
    player.anchor.setTo(0.5, 0.5);
    player.angle = -90;
-   player.scale.x = 1.5;
-   player.scale.y = 1.5;
    game.camera.follow(player);
    game.physics.enable(player, Phaser.Physics.ARCADE);
 
