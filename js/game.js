@@ -6,15 +6,14 @@ GameState.prototype.preload = function() {
 
    game.load.image('field', '../assets/field2.png');
    game.load.spritesheet('player', '../assets/player_133x109.png',133,109,3);
-   game.load.image('enemy1', '../assets/schoolbus.png');
+   game.load.spritesheet('enemy', '../assets/player_133x109.png',133,109,3);
 
 }
 
 var field;
 var player;
 var cursors;
-var enemies;
-var enemy1;
+var enemy;
 var livingEnemies = [];
 
 
@@ -23,28 +22,35 @@ GameState.prototype.create = function() {
    game.physics.startSystem(Phaser.Physics.ARCADE);
 
    game.world.setBounds(0, 0, 1200, 600);
-   //game.add.sprite(0, 0, 'field');
 
 
 // The scrolling field background
    field = game.add.tileSprite(0, 0, 1200, 600, 'field');
+   //game.add.sprite(0, 0, 'field');
 
    player = game.add.sprite(600, 500, 'player');
+
+   game.physics.enable(player, Phaser.Physics.ARCADE);
+
    player.anchor.setTo(0.5, 0.5);
    player.scale.setTo(0.7, 0.7);
    player.animations.add('walk',[0,1,0,2],3,true);
    player.animations.play('walk');
+   player.body.enabled = true;
+   player.body.collideWorldBounds = true;
    game.camera.follow(player);
-   game.physics.enable(player, Phaser.Physics.ARCADE);
 
-   //  The baddies!
-   enemies = game.add.group();
-   enemies.enableBody = true;
-   enemies.physicsBodyType = Phaser.Physics.ARCADE;
-   enemy1= enemies.create(game.world.randomX, 90, 'enemy1');
-   enemy1.anchor.setTo(0.5, 0.5);
-   enemy1.body.moves = true;
-   enemy1.angle = 90;
+
+   enemy = game.add.sprite(game.world.randomX, 90, 'enemy');
+
+   game.physics.enable(enemy, Phaser.Physics.ARCADE);
+
+   enemy.anchor.setTo(0.5, 0.5);
+   enemy.scale.setTo(0.7, 0.7);
+   enemy.animations.add('walk',[0,1,0,2],3,true);
+   enemy.animations.play('walk');
+   enemy.body.enabled = true;
+   enemy.angle = 180;
 
    // And some controls to play the game with
    cursors = game.input.keyboard.createCursorKeys();
@@ -57,9 +63,14 @@ GameState.prototype.update = function() {
 //  Scroll the background
    field.tilePosition.y += 3;
 
-   if (enemy1.alive)
+   game.physics.arcade.collide(player,enemy);
+
+   enemy.body.velocity.y = 300;
+
+   if (enemy.y > 600)
    {
-      enemy1.body.velocity.y += 6;
+      enemy.x = game.world.randomX;
+      enemy.y =  -200;
    }
 
    if (player.alive)
