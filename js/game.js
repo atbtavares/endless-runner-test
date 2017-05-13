@@ -5,17 +5,21 @@ var GameState = function(game) {};
 GameState.prototype.preload = function() {
 
    game.load.image('field', '../assets/field2.png');
-   game.load.spritesheet('player', '../assets/player_133x109.png',133,109,3);
-   game.load.spritesheet('enemy', '../assets/player_133x109.png',133,109,3);
+   game.load.spritesheet('player', '../assets/sprite.png',150,150,10);
+   game.load.spritesheet('enemy', '../assets/sprite.png',150,150,10);
 
 }
 
+var gameon = false;
 var field;
 var player;
 var cursors;
 var enemy;
 var livingEnemies = [];
-
+var score = 0;
+var lives = 1;
+var scoreText;
+var escKey;
 
 GameState.prototype.create = function() {
 
@@ -34,8 +38,8 @@ GameState.prototype.create = function() {
 
    player.anchor.setTo(0.5, 0.5);
    player.scale.setTo(0.7, 0.7);
-   player.animations.add('walk',[0,1,0,2],3,true);
-   player.animations.play('walk');
+   player.animations.add('run',[0,1,2,3,4,5,6,7,8,9],10,true);
+   player.animations.play('run');
    player.body.enabled = true;
    player.body.collideWorldBounds = true;
    game.camera.follow(player);
@@ -47,14 +51,18 @@ GameState.prototype.create = function() {
 
    enemy.anchor.setTo(0.5, 0.5);
    enemy.scale.setTo(0.7, 0.7);
-   enemy.animations.add('walk',[0,1,0,2],3,true);
-   enemy.animations.play('walk');
+   enemy.animations.add('run',[0,1,2,3,4,5,6,7,8,9],10,true);
+   enemy.animations.play('run');
    enemy.body.enabled = true;
    enemy.angle = 180;
 
    // And some controls to play the game with
    cursors = game.input.keyboard.createCursorKeys();
-   //fireButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+   escKey = game.input.keyboard.addKey(Phaser.Keyboard.ESCAPE);
+   //
+   scoreText = game.add.text(32, 550, '0 m', { font: "20px Arial", fill: "#ffffff", align: "left" });
+   scoreText.fixedToCamera = true;
+
 }
 
 
@@ -62,12 +70,16 @@ GameState.prototype.update = function() {
 
 //  Scroll the background
    field.tilePosition.y += 3;
+   if (escKey.isDown)
+   {
+       this.game.state.start('startscreen');
+   }
 
    game.physics.arcade.collide(player,enemy);
 
    enemy.body.velocity.y = 300;
 
-   if (enemy.y > 600)
+   if (enemy.y > game.world.height)
    {
       enemy.x = game.world.randomX;
       enemy.y =  -200;
