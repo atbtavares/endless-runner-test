@@ -6,7 +6,7 @@
 **Idade alvo**: Todas\
 **Classificação ESRB**: E (Everyone)\
 **Resumo do gameplay**: Jogador corre indefinidamente desviando dos oponentes. Quando ele cai sua pontuação é exibida.\
-**Pontos fortes**: Excelente experiência de jogo\
+**Pontos fortes**: Experiência de jogo\
 **Competitividade**: Rugby Hero, Blocky Rugby, Rugby Try, Tiny Rugby e RETRO RUGBY
 
 ## Algumas regras do jogo
