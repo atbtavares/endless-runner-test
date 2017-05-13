@@ -32,4 +32,20 @@ Espaço faz o jogador correr mais rápido (tem tempo de cooldown)
 - [x] Implementar colisões
 - [x] Implementar condições de vitória ou derrota e pontuação
 - [x] Ajustar assets e animações
-- [ ] Melhorias
+
+## Melhorias 
+### Ajustar start.js 
+- [ ] Atualizar background para novo sprite de fundo
+- [ ] Incluir botão 'start'
+- [ ] Incluir botão 'mais opcoes'
+- [ ] Incluir botão 'fechar'
+- [ ] Adicionar tela de menu com os integrantes da equipe no StartState em start.js
+
+### Ajustar game.js 
+- [ ] Incluir botão sair
+- [ ] Incluir novo campo de Rugby que tem plateia
+- [ ] Alterar player para novo sprite
+- [ ] Melhorar movimento do player e inimigo
+- [ ] Implementar IA do inimigo para perseguir o jogador
+
+
