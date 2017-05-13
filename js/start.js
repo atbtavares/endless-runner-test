@@ -35,7 +35,7 @@ StartState.prototype.create = function() {
    cursors = game.input.keyboard.createCursorKeys();
    enterKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
 
-   scoreText = game.add.text(32, 550, '0 m', { font: "20px Arial", fill: "#ffffff", align: "left" });
+   scoreText = game.add.text(32, 550, '0 m', { font: "30px Arial", fill: "#ffffff", align: "left" });
    scoreText.fixedToCamera = true;
    introText = game.add.text(game.world.centerX,game.world.centerY,'aperte "Enter" para jogar', { font: "40px Arial", fill: "#ffffff", align: "center" });
    introText.anchor.setTo(0.5, 0.5);
