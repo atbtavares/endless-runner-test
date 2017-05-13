@@ -15,11 +15,12 @@ var field;
 var player;
 var cursors;
 var enemy;
-var livingEnemies = [];
 var score = 0;
-var lives = 1;
+var life = 1;
 var scoreText;
 var escKey;
+var enterKey;
+var stateText;
 
 GameState.prototype.create = function() {
 
@@ -54,14 +55,22 @@ GameState.prototype.create = function() {
    enemy.animations.add('run',[0,1,2,3,4,5,6,7,8,9],10,true);
    enemy.animations.play('run');
    enemy.body.enabled = true;
+//   enemy.body.collideWorldBounds = true;
    enemy.angle = 180;
 
    // And some controls to play the game with
    cursors = game.input.keyboard.createCursorKeys();
-   escKey = game.input.keyboard.addKey(Phaser.Keyboard.ESCAPE);
+   escKey = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
+   enterKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
    //
    scoreText = game.add.text(32, 550, '0 m', { font: "20px Arial", fill: "#ffffff", align: "left" });
    scoreText.fixedToCamera = true;
+
+   stateText = game.add.text(game.width/2, game.height/2, 'GAME OVER!\nVoce correu '+score+' m \nAperte ENTER para jogar novamente', { font: "40px Arial", fill: "#ffffff", align: "center" });
+   stateText.anchor.setTo(0.5,0.5);
+   stateText.visible = false;
+   stateText.fixedToCamera = true;
+
 
 }
 
@@ -105,21 +114,13 @@ GameState.prototype.update = function() {
       {
         player.y += 4;
       }
-//  Firing?
-/*
-      if (fireButton.isDown) {
-        fireBullet();
-      }
-
-      if (game.time.now > firingTimer) {
-        enemyFires();
-      }
-
-//  Run collision
-      game.physics.arcade.overlap(bullets, enemies, collisionHandler, null, this);
-      game.physics.arcade.overlap(enemyBullets, player, enemyHitsPlayer, null, this);
-*/
+      game.physics.arcade.overlap(enemy, player, enemyHitsPlayer, null, this);
+  } else {
+    stateText.visible = true;
+    if (enterKey.isDown)
+       this.game.state.start('game');
   }
+
 }
 
 function render() {
@@ -127,3 +128,8 @@ function render() {
     game.debug.spriteCoords(player, 32, 32);
 }
 
+
+function enemyHitsPlayer (player,enemy) {
+    player.kill();
+    enemy.kill();
+}
