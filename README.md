@@ -26,9 +26,10 @@ Espaço faz o jogador correr mais rápido (tem tempo de cooldown)
 - [x] Criar o GDD
 - [x] Definir regras básicas
 - [x] Implementar camera do estado de jogo
-- [ ] Implementar estados de menu e pause
-- [ ] Implementar movimentos do jogador
-- [ ] Implementar movimentos dos adversários
-- [ ] Implementar colisões
-- [ ] Implementar condições de vitória ou derrota e pontuação
-- [ ] Ajustar assets e animações
+- [x] Implementar estados de menu e pause
+- [x] Implementar movimentos do jogador
+- [x] Implementar movimentos dos adversários
+- [x] Implementar colisões
+- [x] Implementar condições de vitória ou derrota e pontuação
+- [x] Ajustar assets e animações
+- [ ] Melhorias
