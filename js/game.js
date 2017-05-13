@@ -21,13 +21,15 @@ var scoreText;
 var escKey;
 var enterKey;
 var stateText;
+var timer;
 
 GameState.prototype.create = function() {
 
    game.physics.startSystem(Phaser.Physics.ARCADE);
 
-   game.world.setBounds(0, 0, 1200, 600);
+   game.time.events.loop(Phaser.Timer.SECOND, updateScore, this);
 
+   game.world.setBounds(0, 0, 1200, 600);
 
 // The scrolling field background
    field = game.add.tileSprite(0, 0, 1200, 600, 'field');
@@ -55,7 +57,6 @@ GameState.prototype.create = function() {
    enemy.animations.add('run',[0,1,2,3,4,5,6,7,8,9],10,true);
    enemy.animations.play('run');
    enemy.body.enabled = true;
-//   enemy.body.collideWorldBounds = true;
    enemy.angle = 180;
 
    // And some controls to play the game with
@@ -63,10 +64,11 @@ GameState.prototype.create = function() {
    escKey = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
    enterKey = game.input.keyboard.addKey(Phaser.Keyboard.ENTER);
    //
-   scoreText = game.add.text(32, 550, '0 m', { font: "20px Arial", fill: "#ffffff", align: "left" });
+   scoreText = game.add.text(32, 550, '0 m', { font: "30px Arial", fill: "#ffffff", align: "left" });
    scoreText.fixedToCamera = true;
+   score = 0;
 
-   stateText = game.add.text(game.width/2, game.height/2, 'GAME OVER!\nVoce correu '+score+' m \nAperte ENTER para jogar novamente', { font: "40px Arial", fill: "#ffffff", align: "center" });
+   stateText = game.add.text(game.width/2, game.height/2, '', { font: "40px Arial", fill: "#ffffff", align: "center" });
    stateText.anchor.setTo(0.5,0.5);
    stateText.visible = false;
    stateText.fixedToCamera = true;
@@ -115,18 +117,29 @@ GameState.prototype.update = function() {
         player.y += 4;
       }
       game.physics.arcade.overlap(enemy, player, enemyHitsPlayer, null, this);
+
+      scoreText.text = score + ' m';
+
   } else {
-    stateText.visible = true;
-    if (enterKey.isDown)
-       this.game.state.start('game');
+      stateText.text = 'GAME OVER!\nVoce correu '+score+' m \nAperte ENTER para jogar novamente';
+      stateText.visible = true;
+      if (enterKey.isDown)
+         this.game.state.start('game');
   }
 
+}
+
+function updateScore(){
+  if (player.alive){ 
+    score = score + 0.875;
+  }
 }
 
 function render() {
     game.debug.cameraInfo(game.camera, 280, 32);
     game.debug.spriteCoords(player, 32, 32);
 }
+
 
 
 function enemyHitsPlayer (player,enemy) {
