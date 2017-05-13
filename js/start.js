@@ -37,7 +37,7 @@ StartState.prototype.create = function() {
 
    scoreText = game.add.text(32, 550, '0 m', { font: "20px Arial", fill: "#ffffff", align: "left" });
    scoreText.fixedToCamera = true;
-   introText = game.add.text(game.world.centerX, 400, 'aperte "Enter" para jogar', { font: "40px Arial", fill: "#ffffff", align: "center" });
+   introText = game.add.text(game.world.centerX,game.world.centerY,'aperte "Enter" para jogar', { font: "40px Arial", fill: "#ffffff", align: "center" });
    introText.anchor.setTo(0.5, 0.5);
 
 }
