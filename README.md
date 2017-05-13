@@ -6,7 +6,7 @@
 **Idade alvo**: Todas\
 **Classificação ESRB**: E (Everyone)\
 **Resumo do gameplay**: Jogador corre indefinidamente desviando dos oponentes. Quando ele cai sua pontuação é exibida.\
-**Pontos fortes**: Excelente experiência de jogo\
+**Pontos fortes**: Experiência de jogo\
 **Competitividade**: Rugby Hero, Blocky Rugby, Rugby Try, Tiny Rugby e RETRO RUGBY
 
 ## Algumas regras do jogo
@@ -26,9 +26,10 @@ Espaço faz o jogador correr mais rápido (tem tempo de cooldown)
 - [x] Criar o GDD
 - [x] Definir regras básicas
 - [x] Implementar camera do estado de jogo
-- [ ] Implementar estados de menu e pause
-- [ ] Implementar movimentos do jogador
-- [ ] Implementar movimentos dos adversários
-- [ ] Implementar colisões
-- [ ] Implementar condições de vitória ou derrota e pontuação
-- [ ] Ajustar assets e animações
+- [x] Implementar estados de menu e pause
+- [x] Implementar movimentos do jogador
+- [x] Implementar movimentos dos adversários
+- [x] Implementar colisões
+- [x] Implementar condições de vitória ou derrota e pontuação
+- [x] Ajustar assets e animações
+- [ ] Melhorias
