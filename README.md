@@ -35,8 +35,8 @@ Espaço faz o jogador correr mais rápido (tem tempo de cooldown)
 
 ## Melhorias 
 ### Ajustar start.js 
-- [ ] Atualizar background para novo sprite de fundo
-- [ ] Incluir botão 'start'
+- [x] Atualizar background para novo sprite de fundo
+- [x] Incluir botão 'start'
 - [ ] Incluir botão 'mais opcoes'
 - [ ] Incluir botão 'fechar'
 - [ ] Adicionar tela de menu com os integrantes da equipe no StartState em start.js
