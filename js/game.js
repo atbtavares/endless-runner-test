@@ -7,7 +7,6 @@ GameState.prototype.preload = function() {
    game.load.image('field', '../assets/field2.png');
    game.load.spritesheet('player', '../assets/sprite.png',150,150,10);
    game.load.spritesheet('enemy', '../assets/sprite.png',150,150,10);
-   game.load.spritesheet('fechar', '../assets/fechar.png',192,75,10);
 
 }
 
